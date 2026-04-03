@@ -148,9 +148,6 @@ rate-limiter/
 │   └── lua-scripts/
 │       ├── sliding-window-log-script.lua
 │       └── token-window-script.lua
-└── src/test/java/
-    └── dev/adi/customimpl/ratelimiter/
-        └── RateLimiterApplicationTests.java
 ```
 
 ### Adding New Algorithms
