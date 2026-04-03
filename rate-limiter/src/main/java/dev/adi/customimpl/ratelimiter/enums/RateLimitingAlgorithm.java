@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum RateLimitingAlgorithm {
     FIXED_WINDOW("fixed_window"),
-    LEAKY_BUCKET("leaky_bucket"),
     SLIDING_WINDOW_COUNTER("sliding_window_counter"),
     SLIDING_WINDOW_LOG("sliding_window_log"),
     TOKEN_BUCKET("token_bucket")

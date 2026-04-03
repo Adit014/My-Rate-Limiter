@@ -4,7 +4,7 @@ A high-performance, distributed rate limiting service built with Spring Boot and
 
 ## Features
 
-- **Multiple Algorithms**: Supports Fixed Window, Leaky Bucket, Sliding Window Counter, Sliding Window Log, and Token Bucket rate limiting strategies
+- **Multiple Algorithms**: Supports Fixed Window, Sliding Window Counter, Sliding Window Log, and Token Bucket rate limiting strategies
 - **Distributed**: Uses Redis for storage, enabling horizontal scaling across multiple instances
 - **Spring Boot Integration**: Easy to integrate into existing Spring applications
 - **Configurable Limits**: Set maximum requests per time window (default: 100 requests per 10 minutes)
@@ -14,10 +14,9 @@ A high-performance, distributed rate limiting service built with Spring Boot and
 ## Supported Algorithms
 
 1. **Fixed Window**: Divides time into fixed intervals and counts requests within each window
-2. **Leaky Bucket**: Requests are added to a bucket and leak out at a constant rate
-3. **Sliding Window Counter**: Uses multiple fixed windows to provide smoother rate limiting
-4. **Sliding Window Log**: Maintains a log of request timestamps within the window
-5. **Token Bucket**: Tokens are added to a bucket at a fixed rate, requests consume tokens
+2. **Sliding Window Counter**: Uses multiple fixed windows to provide smoother rate limiting
+3. **Sliding Window Log**: Maintains a log of request timestamps within the window
+4. **Token Bucket**: Tokens are added to a bucket at a fixed rate, requests consume tokens
 
 ## Prerequisites
 
@@ -59,7 +58,6 @@ GET /test-rate-limit?type={algorithm}
 **Parameters:**
 - `type`: The rate limiting algorithm to use. Supported values:
   - `fixed_window`
-  - `leaky_bucket`
   - `sliding_window_counter`
   - `sliding_window_log`
   - `token_bucket`
@@ -114,7 +112,6 @@ Expected output: 100 `200` responses followed by 10 `429` responses.
 
 The application uses Lua scripts for atomic Redis operations:
 - `token-window-script.lua` - Token bucket algorithm
-- `leaky-bucket-script.lua` - Leaky bucket algorithm
 - `sliding-window-log-script.lua` - Sliding window log algorithm
 
 ## Development
@@ -135,7 +132,6 @@ rate-limiter/
 │   │   └── RateLimitingFilter.java
 │   ├── impl/
 │   │   ├── FixedWindowRateLimiter.java
-│   │   ├── LeakyBucketRateLimiter.java
 │   │   ├── SlidingWindowCounter.java
 │   │   ├── SlidingWindowLogRateLimiter.java
 │   │   └── TokenBucketRateLimiter.java
@@ -144,7 +140,6 @@ rate-limiter/
 ├── src/main/resources/
 │   ├── application.properties
 │   └── lua-scripts/
-│       ├── leaky-bucket-script.lua
 │       ├── sliding-window-log-script.lua
 │       └── token-window-script.lua
 └── src/test/java/
