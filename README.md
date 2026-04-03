@@ -153,3 +153,8 @@ rate-limiter/
 2. Implement `RateLimiter` interface
 3. Add `@Service` annotation to the implementation
 4. Create corresponding Lua script if needed
+
+## Articles
+
+- [Rate Limiting from Theory to Production with Spring Boot and Redis](https://medium.com/@adi003/rate-limiting-from-theory-to-production-with-spring-boot-and-redis-bda2b836425b)
+- [Rate Limiting from Theory to Production with Spring Boot and Redis](https://adi-backend.hashnode.dev/rate-limiting-from-theory-to-production-with-spring-boot-and-redis)
